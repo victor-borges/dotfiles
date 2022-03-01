@@ -13,38 +13,6 @@ Register-ArgumentCompleter -Native -CommandName dotnet -ScriptBlock {
       }
 }
 
-function Test-Any {
-   param($EvaluateCondition,
-       [Parameter(ValueFromPipeline = $true)] $ObjectToTest)
-   begin {
-       $any = $false
-   }
-   process {
-       if (-not $any -and (& $EvaluateCondition $ObjectToTest)) {
-           $any = $true
-       }
-   }
-   end {
-       $any
-   }
-}
-
-if ($IsWindows)
-{
-   $terminalSettingsFilePath = "$env:LOCALAPPDATA/Packages/Microsoft.WindowsTerminal_8wekyb3d8bbwe/LocalState/settings.json";
-   if (Test-Path $terminalSettingsFilePath)
-   {
-      $settings = Get-Content $terminalSettingsFilePath -Raw | ConvertFrom-Json -Depth 100;
-      $action = '{ "keys": "ctrl+backspace", "command": { "action": "sendInput", "input": "\u0017" } }' | ConvertFrom-Json;
-
-      if (-not ($settings.actions | Test-Any { $_.keys -eq $action.keys }))
-      {
-         $settings.actions += $action;
-         $settings | ConvertTo-Json -Depth 100 | Set-Content $terminalSettingsFilePath;
-      }
-   }
-}
-
 # Find out which OS we are running on
 $icon =
    if ($IsWindows) { '者︀' }
