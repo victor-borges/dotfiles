@@ -29,16 +29,19 @@ function Test-Any {
    }
 }
 
-$terminalSettingsFilePath = "$env:LOCALAPPDATA/Packages/Microsoft.WindowsTerminal_8wekyb3d8bbwe/LocalState/settings.json";
-if (Test-Path $terminalSettingsFilePath)
+if ($IsWindows)
 {
-   $settings = Get-Content $terminalSettingsFilePath -Raw | ConvertFrom-Json -Depth 100;
-   $action = '{ "keys": "ctrl+backspace", "command": { "action": "sendInput", "input": "\u0017" } }' | ConvertFrom-Json;
-
-   if (-not ($settings.actions | Test-Any { $_.keys -eq $action.keys }))
+   $terminalSettingsFilePath = "$env:LOCALAPPDATA/Packages/Microsoft.WindowsTerminal_8wekyb3d8bbwe/LocalState/settings.json";
+   if (Test-Path $terminalSettingsFilePath)
    {
-      $settings.actions += $action;
-      $settings | ConvertTo-Json -Depth 100 | Set-Content $terminalSettingsFilePath;
+      $settings = Get-Content $terminalSettingsFilePath -Raw | ConvertFrom-Json -Depth 100;
+      $action = '{ "keys": "ctrl+backspace", "command": { "action": "sendInput", "input": "\u0017" } }' | ConvertFrom-Json;
+
+      if (-not ($settings.actions | Test-Any { $_.keys -eq $action.keys }))
+      {
+         $settings.actions += $action;
+         $settings | ConvertTo-Json -Depth 100 | Set-Content $terminalSettingsFilePath;
+      }
    }
 }
 
