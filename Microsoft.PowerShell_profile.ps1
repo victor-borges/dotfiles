@@ -3,6 +3,8 @@ Set-Alias l ls
 Import-Module PSReadLine
 Import-Module cd-extras
 
+Set-PSReadLineKeyHandler -Key Tab -Function MenuComplete
+
 # PowerShell parameter completion shim for the dotnet CLI
 Register-ArgumentCompleter -Native -CommandName dotnet -ScriptBlock {
    param($commandName, $wordToComplete, $cursorPosition)
