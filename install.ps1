@@ -8,7 +8,6 @@ if (!(Get-Module -ListAvailable -Name PSReadLine))
     Install-Module PSReadLine -Force;
 }
 
-Copy-Item -Path Microsoft.PowerShell_profile.ps1 -Destination $Profile
 Copy-Item -Path starship.toml -Destination "$HOME/.config"
 
 if ($IsWindows)
@@ -48,3 +47,42 @@ if ($IsLinux)
     Write-Warning "The following command will ask for your password to change the shell." -WarningAction Inquire
     chsh -s /usr/bin/pwsh
 }
+
+# Find out which OS we are running on
+$icon =
+   if ($IsWindows) { '者︀' }
+   elseif ($IsMacOS) { '︀' }
+   elseif ($IsLinux)
+   {
+      $distro = $(awk '/^ID=/' /etc/*-release | awk -F'=' '{ print tolower($2) }')
+
+      switch -Wildcard ($distro)
+      {
+         '*kali*'        { '︀' }
+         '*arch*'        { '︀' }
+         '*debian*'      { '︀' }
+         '*raspbian*'    { '︀' }
+         '*ubuntu*'      { '︀' }
+         '*elementary*'  { '︀' }
+         '*fedora*'      { '︀' }
+         '*coreos*'      { '︀' }
+         '*gentoo*'      { '︀' }
+         '*mageia*'      { '︀' }
+         '*centos*'      { '︀' }
+         '*opensuse*'    { '︀' }
+         '*tumbleweed*'  { '︀' }
+         '*sabayon*'     { '︀' }
+         '*slackware*'   { '︀' }
+         '*linuxmint*'   { '︀' }
+         '*alpine*'      { '︀' }
+         '*aosc*'        { '︀' }
+         '*nixos*'       { '︀' }
+         '*devuan*'      { '︀' }
+         '*manjaro*'     { '︀' }
+         '*rhel*'        { '︀' }
+         default         { '︀' }
+      }
+   }
+
+"`$ENV:STARSHIP_DISTRO = '$icon '$([System.Environment]::NewLine)" | Out-File -FilePath $Profile
+Add-Content -Path $Profile -Value (Get-Content ./Microsoft.PowerShell_profile.ps1)
