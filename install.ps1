@@ -8,6 +8,17 @@ if (!(Get-Module -ListAvailable -Name PSReadLine))
     Install-Module PSReadLine -Force;
 }
 
+if (!(Get-Module -ListAvailable -Name PSReadLine))
+{
+    Install-Module -Name Az -Scope CurrentUser -Repository PSGallery -Force
+}
+
+if (!(choco --version))
+{
+    [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072;
+    Invoke-Expression ((New-Object System.Net.WebClient).DownloadString('https://community.chocolatey.org/install.ps1'));
+}
+
 Copy-Item -Path starship.toml -Destination "$HOME/.config"
 
 if ($IsWindows)
@@ -48,7 +59,6 @@ if ($IsLinux)
     chsh -s /usr/bin/pwsh
 }
 
-# Find out which OS we are running on
 $icon =
    if ($IsWindows) { '者︀' }
    elseif ($IsMacOS) { '︀' }
