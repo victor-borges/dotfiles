@@ -96,7 +96,7 @@ disabled = false
 
 [dotnet]
 detect_extensions = ["csproj", "fsproj", "xproj", "sln"]
-format = 'via [$symbol($version )(︀ $tfm )]($style)'
+format = 'via [$symbol($version )(︀$tfm )]($style)'
 
 [rust]
 symbol = '︀ '
