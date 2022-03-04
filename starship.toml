@@ -1,12 +1,13 @@
 # ~/.config/starship.toml
 
 add_newline = true
+right_format = "$battery$time"
 
 command_timeout = 1000
 
 format = """\
-[╭╴](238)$env_var\
-$all[╰─](238)$character"""
+[╭╴](238)$env_var$all
+[╰─](238)$character"""
 
 [character]
 success_symbol = "[︀](238)"
@@ -107,3 +108,67 @@ symbol = 'CMake '
 [azure]
 symbol = '︀ '
 disabled = false
+
+[time]
+disabled = false
+
+[line_break]
+disabled = true
+
+[battery]
+style = "white"
+full_symbol = "︀"
+charging_symbol = "︀"
+unknown_symbol = "︀"
+empty_symbol = "︀"
+format = "[$symbol]($style) "
+
+[[battery.display]]
+threshold = 10
+charging_symbol = "︀"
+discharging_symbol = "︀"
+
+[[battery.display]]
+threshold = 20
+charging_symbol = "︀"
+discharging_symbol = "︀"
+
+[[battery.display]]
+threshold = 30
+charging_symbol = "︀"
+discharging_symbol = "︀"
+
+[[battery.display]]
+threshold = 40
+charging_symbol = "︀"
+discharging_symbol = "︀"
+
+[[battery.display]]
+threshold = 50
+charging_symbol = "︀"
+discharging_symbol = "︀"
+
+[[battery.display]]
+threshold = 60
+charging_symbol = "︀"
+discharging_symbol = "︀"
+
+[[battery.display]]
+threshold = 70
+charging_symbol = "︀"
+discharging_symbol = "︀"
+
+[[battery.display]]
+threshold = 80
+charging_symbol = "︀"
+discharging_symbol = "︀"
+
+[[battery.display]]
+threshold = 90
+charging_symbol = "︀"
+discharging_symbol = "︀"
+
+[[battery.display]]
+threshold = 100
+charging_symbol = "︀"
+discharging_symbol = "︀"

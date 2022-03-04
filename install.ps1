@@ -13,7 +13,7 @@ if (!(Get-Module -ListAvailable -Name PSReadLine))
     Install-Module -Name Az -Scope CurrentUser -Repository PSGallery -Force
 }
 
-if (!(choco --version))
+if ($IsWindows -and !(choco --version))
 {
     [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072;
     Invoke-Expression ((New-Object System.Net.WebClient).DownloadString('https://community.chocolatey.org/install.ps1'));
@@ -55,7 +55,6 @@ if ($IsWindows)
 
 if ($IsLinux)
 {
-    Write-Warning "The following command will ask for your password to change the shell." -WarningAction Inquire
     chsh -s /usr/bin/pwsh
 }
 
@@ -93,6 +92,11 @@ $icon =
          default         { '︀' }
       }
    }
+
+if (!(Test-Path $Profile))
+{
+    New-Item -Path $Profile
+}
 
 "`$ENV:STARSHIP_DISTRO = '$icon '$([System.Environment]::NewLine)" | Out-File -FilePath $Profile
 Add-Content -Path $Profile -Value (Get-Content ./Microsoft.PowerShell_profile.ps1)
