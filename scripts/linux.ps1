@@ -1,3 +1,4 @@
+Write-Output "Checking the default shell..."
 if ($env:SHELL -ne "/usr/bin/pwsh")
 {
     Write-Output "Changing default shell to Powershell..."
