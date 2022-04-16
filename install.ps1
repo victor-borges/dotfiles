@@ -13,6 +13,7 @@ if (!(Get-Module -ListAvailable -Name PowerHtml)) { Install-Module PowerHtml -Fo
 if (!(Get-Module -ListAvailable -Name PowerShellBuild)) { Install-Module PowerShellBuild -Force }
 if (!(Get-Module -ListAvailable -Name psake)) { Install-Module psake -Force }
 if (!(Get-Module -ListAvailable -Name PSScriptAnalyzer)) { Install-Module PSScriptAnalyzer -Force }
+if (!(Get-Module -ListAvailable -Name PowerShellHumanizer)) { Install-Module PowerShellHumanizer -Force }
 
 Write-Output "Copying starship.toml..."
 Copy-Item -Path starship.toml -Destination "$HOME/.config";
@@ -22,10 +23,10 @@ New-Item -Path $Profile -Force;
 
 Write-Output "Cloning custom Terminal-Icons repository..."
 git clone "https://github.com/victor-borges/Terminal-Icons.git";
-if ($IsWindows) { Unblock-File "$PSScriptRoot\Terminal-Icons\Terminal-Icons\Terminal-Icons.format.ps1xml"; }
-Set-Location "$PSScriptRoot\Terminal-Icons\";
-& ".\build.ps1";
-Set-Location "$PSScriptRoot";
+if ($IsWindows) { Unblock-File "$PSScriptRoot\Terminal-Icons\Terminal-Icons\Terminal-Icons.format.ps1xml" }
+Set-Location "$PSScriptRoot\Terminal-Icons\"
+& ".\build.ps1"
+Set-Location $PSScriptRoot
 
 Write-Output "Installing Terminal-Icons module..."
 Copy-Item -Recurse -Path ".\Terminal-Icons\Output\Terminal-Icons\" -Destination $env:PSModulePath.Split(";")[0] -Force
