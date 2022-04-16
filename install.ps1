@@ -15,20 +15,25 @@ if (!(Get-Module -ListAvailable -Name psake)) { Install-Module psake -Force }
 if (!(Get-Module -ListAvailable -Name PSScriptAnalyzer)) { Install-Module PSScriptAnalyzer -Force }
 
 Write-Output "Copying starship.toml..."
-Copy-Item -Path starship.toml -Destination "$HOME/.config"
+Copy-Item -Path starship.toml -Destination "$HOME/.config";
 
-Remove-Item -Path $Profile -Force
-New-Item -Path $Profile -Force
+Remove-Item -Path $Profile -Force;
+New-Item -Path $Profile -Force;
+
+Write-Output "Cloning custom Terminal-Icons repository..."
+git clone "https://github.com/victor-borges/Terminal-Icons.git";
+Unblock-File "$PSScriptRoot\Terminal-Icons\Terminal-Icons\Terminal-Icons.format.ps1xml";
+Set-Location "$PSScriptRoot\Terminal-Icons\";
+& ".\build.ps1";
+Set-Location "$PSScriptRoot";
+
+Write-Output "Installing Terminal-Icons module..."
+Copy-Item -Recurse -Path ".\Terminal-Icons\Output\Terminal-Icons\" -Destination $env:PSModulePath.Split(";")[0] -Force
 
 if ($IsWindows) { & "$PSScriptRoot\scripts\windows.ps1" }
 elseif ($IsLinux) { & "$PSScriptRoot\scripts\linux.ps1" }
 
 Write-Output "Copying rest of Powershell profile contents..."
 Add-Content -Path $Profile -Value (Get-Content ./Microsoft.PowerShell_profile.ps1)
-
-Write-Output "Cloning custom Terminal-Icons repository..."
-git clone "https://github.com/victor-borges/Terminal-Icons.git"
-Unblock-File "$PSScriptRoot\Terminal-Icons\Terminal-Icons\Terminal-Icons.format.ps1xml"
-& "$PSScriptRoot\Terminal-Icons\build.ps1"
 
 Write-Output "All done!"
