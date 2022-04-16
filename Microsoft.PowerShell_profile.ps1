@@ -1,6 +1,7 @@
 Set-Alias l ls
 
 Import-Module PSReadLine
+Import-Module PowerShellHumanizer
 Import-Module Terminal-Icons
 Import-Module cd-extras
 
