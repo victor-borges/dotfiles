@@ -22,7 +22,7 @@ New-Item -Path $Profile -Force;
 
 Write-Output "Cloning custom Terminal-Icons repository..."
 git clone "https://github.com/victor-borges/Terminal-Icons.git";
-Unblock-File "$PSScriptRoot\Terminal-Icons\Terminal-Icons\Terminal-Icons.format.ps1xml";
+if ($IsWindows) { Unblock-File "$PSScriptRoot\Terminal-Icons\Terminal-Icons\Terminal-Icons.format.ps1xml"; }
 Set-Location "$PSScriptRoot\Terminal-Icons\";
 & ".\build.ps1";
 Set-Location "$PSScriptRoot";

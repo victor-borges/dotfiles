@@ -5,12 +5,10 @@ if ($env:SHELL -ne "/usr/bin/pwsh")
     chsh -s /usr/bin/pwsh
 }
 
-$env:STARSHIP_DISTRO =
-{
+$env:STARSHIP_DISTRO = {
     $distro = $(awk '/^ID=/' /etc/*-release | awk -F'=' '{ print tolower($2) }')
 
-    switch -Wildcard ($distro)
-    {
+    switch -Wildcard ($distro) {
         '*kali*'        { '︀ ' }
         '*arch*'        { '︀ ' }
         '*debian*'      { '︀ ' }
