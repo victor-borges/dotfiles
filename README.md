@@ -1,4 +1,6 @@
-# 🔧 .files
+# 🔧 dotfiles
+
+![Windows Terminal](docs/windows-terminal.png "Windows Terminal")
 
 ## Prerequisites
 
