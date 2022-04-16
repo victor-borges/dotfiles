@@ -29,7 +29,8 @@ Set-Location "$PSScriptRoot\Terminal-Icons\"
 Set-Location $PSScriptRoot
 
 Write-Output "Installing Terminal-Icons module..."
-Copy-Item -Recurse -Path ".\Terminal-Icons\Output\Terminal-Icons\" -Destination $env:PSModulePath.Split(";")[0] -Force
+$separator = if ($IsWindows) { ";" } else { ":" }
+Copy-Item -Recurse -Path ".\Terminal-Icons\Output\Terminal-Icons\" -Destination $env:PSModulePath.Split($separator)[0] -Force
 
 if ($IsWindows) { & "$PSScriptRoot\scripts\windows.ps1" }
 elseif ($IsLinux) { & "$PSScriptRoot\scripts\linux.ps1" }
