@@ -18,16 +18,16 @@ if (!(Get-Module -ListAvailable -Name PowerShellHumanizer)) { Install-Module Pow
 Write-Output "Building and installing Terminal-Icons module..."
 if ($IsWindows) { Unblock-File "$PSScriptRoot\Terminal-Icons\Terminal-Icons\Terminal-Icons.format.ps1xml" }
 Set-Location "$PSScriptRoot\Terminal-Icons\"
-& ".\build.ps1"
+& ".\build.ps1" *> $null
 Set-Location $PSScriptRoot
 $separator = if ($IsWindows) { ";" } else { ":" }
 Copy-Item -Recurse -Path ".\Terminal-Icons\Output\Terminal-Icons\" -Destination $env:PSModulePath.Split($separator)[0] -Force
 
 Write-Output "Copying starship.toml..."
-Copy-Item -Path starship.toml -Destination "$HOME/.config" -Force
+Copy-Item -Path starship.toml -Destination "$HOME/.config" -Force *> $null
 
-Remove-Item -Path $PROFILE -Force;
-New-Item -Path $PROFILE -Force;
+Remove-Item -Path $PROFILE -Force *> $null
+New-Item -Path $PROFILE -Force *> $null
 
 if ($IsWindows) { & "$PSScriptRoot\scripts\windows.ps1" }
 elseif ($IsLinux) { & "$PSScriptRoot\scripts\linux.ps1" }
