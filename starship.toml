@@ -107,7 +107,7 @@ symbol = 'CMake '
 
 [azure]
 symbol = '︀ '
-disabled = false
+disabled = true
 
 [time]
 disabled = false

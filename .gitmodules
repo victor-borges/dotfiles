@@ -1,0 +1,3 @@
+[submodule "Terminal-Icons"]
+	path = Terminal-Icons
+	url = https://github.com/victor-borges/Terminal-Icons

@@ -36,5 +36,5 @@ Write-Output "Copying Windows Terminal settings..."
 $terminalSettingsFilePath = "$env:LOCALAPPDATA/Packages/Microsoft.WindowsTerminal_8wekyb3d8bbwe/LocalState/settings.json"
 Copy-Item -Path .\settings.json -Destination $terminalSettingsFilePath -Force
 
-$env:STARSHIP_DISTRO = '者︀ '
+$env:STARSHIP_DISTRO = '者 '
 [Environment]::SetEnvironmentVariable('STARSHIP_DISTRO', $env:STARSHIP_DISTRO, 'User')
