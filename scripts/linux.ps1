@@ -30,4 +30,4 @@ $env:STARSHIP_DISTRO = switch -Wildcard ($(awk '/^ID=/' /etc/*-release | awk -F'
     default         { '︀ ' }
 }
 
-Add-Content $PROFILE -Value "$$env:STARSHIP_DISTRO = '$env:STARSHIP_DISTRO '"
+Add-Content $PROFILE -Value "`$env:STARSHIP_DISTRO = '$env:STARSHIP_DISTRO '"
