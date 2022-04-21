@@ -1,12 +1,10 @@
 Write-Output "Checking the default shell..."
-if ($env:SHELL -ne "/usr/bin/pwsh")
-{
+if ($env:SHELL -ne "/usr/bin/pwsh") {
     Write-Output "Changing default shell to Powershell..."
     chsh -s /usr/bin/pwsh
 }
 
-$env:STARSHIP_DISTRO = switch -Wildcard ($(awk '/^ID=/' /etc/*-release | awk -F'=' '{ print tolower($2) }'))
-{
+$env:STARSHIP_DISTRO = switch -Wildcard ($(awk '/^ID=/' /etc/*-release | awk -F'=' '{ print tolower($2) }')) {
     '*kali*'        { '︀ ' }
     '*arch*'        { '︀ ' }
     '*debian*'      { '︀ ' }

@@ -15,5 +15,12 @@ Register-ArgumentCompleter -Native -CommandName dotnet -ScriptBlock {
       }
 }
 
+# Executes git fetch if inside a git repository
+function Invoke-Starship-PreCommand {
+   if ($(git rev-parse --is-inside-work-tree) -eq 'true') {
+      Start-Job -ScriptBlock { git fetch }
+   }
+}
+
 # Invoke Starship.rs
 Invoke-Expression (&starship init powershell)
