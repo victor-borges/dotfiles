@@ -17,8 +17,9 @@ Register-ArgumentCompleter -Native -CommandName dotnet -ScriptBlock {
 
 # Executes git fetch if inside a git repository
 function Invoke-Starship-PreCommand {
-
    $LastFetchFilePath = "$(git rev-parse --show-toplevel)/.git/STARSHIP_LAST_FETCH"
+   if (-not (Test-Path $LastFetchFilePath)) { New-Item $LastFetchFilePath -Force }
+   
    $LastFetch = [DateTime]::ParseExact((Get-Content -Path $LastFetchFilePath), "o", [CultureInfo]::InvariantCulture)
    $IsInsideGitRepository = $(git rev-parse --is-inside-work-tree) -eq 'true'
 
