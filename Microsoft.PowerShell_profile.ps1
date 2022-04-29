@@ -18,15 +18,30 @@ Register-ArgumentCompleter -Native -CommandName dotnet -ScriptBlock {
 # Executes git fetch if inside a git repository
 function Invoke-Starship-PreCommand {
    $LastFetchFilePath = "$(git rev-parse --show-toplevel)/.git/STARSHIP_LAST_FETCH" *> $null
-   if (-not (Test-Path $LastFetchFilePath)) { New-Item $LastFetchFilePath -Force *> $null }
    
-   $LastFetch = [DateTime]::ParseExact((Get-Content -Path $LastFetchFilePath), "o", [CultureInfo]::InvariantCulture)
-   $IsInsideGitRepository = $(git rev-parse --is-inside-work-tree) -eq 'true'
+   if (Test-Path $LastFetchFilePath)
+   {
+      $LastFetch = [DateTime]::ParseExact((Get-Content -Path $LastFetchFilePath), "o", [CultureInfo]::InvariantCulture)
+      $IsInsideGitRepository = $(git rev-parse --is-inside-work-tree) -eq 'true'
 
-   if ((Get-Date) - $LastFetch -gt [TimeSpan]::FromSeconds(30) -and $IsInsideGitRepository) {
-      Start-Job -ScriptBlock { git fetch } *> $null
-      Set-Content -Path $LastFetchFilePath -Value (Get-Date).ToString("o", [CultureInfo]::InvariantCulture) *> $null
+      if ((Get-Date) - $LastFetch -gt [TimeSpan]::FromSeconds(30) -and $IsInsideGitRepository) {
+         Update-GitRepositoryInfo -LastFetchFilePath $LastFetchFilePath
+      }
    }
+   else
+   {
+      New-Item $LastFetchFilePath -Force *> $null
+      Update-GitRepositoryInfo -LastFetchFilePath $LastFetchFilePath
+   }
+}
+
+function Update-GitRepositoryInfo {
+   param(
+      [string]$LastFetchFilePath
+   )
+
+   Start-Job -ScriptBlock { git fetch } *> $null
+   Set-Content -Path $LastFetchFilePath -Value (Get-Date).ToString("o", [CultureInfo]::InvariantCulture) *> $null
 }
 
 # Invoke Starship.rs
