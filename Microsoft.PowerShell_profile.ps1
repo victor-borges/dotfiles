@@ -5,7 +5,9 @@ Import-Module PowerShellHumanizer
 Import-Module Terminal-Icons
 Import-Module cd-extras
 
+Set-PSReadLineOption -EditMode Windows
 Set-PSReadLineKeyHandler -Key Tab -Function MenuComplete
+Set-PSReadLineKeyHandler -Key Ctrl+Space -Function MenuComplete
 
 # PowerShell parameter completion shim for the dotnet CLI
 Register-ArgumentCompleter -Native -CommandName dotnet -ScriptBlock {
