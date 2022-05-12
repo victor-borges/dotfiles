@@ -7,7 +7,7 @@ Import-Module cd-extras
 
 Set-PSReadLineOption -EditMode Windows
 Set-PSReadLineKeyHandler -Key Tab -Function MenuComplete
-Set-PSReadLineKeyHandler -Key Ctrl+Space -Function MenuComplete
+Set-PSReadLineKeyHandler -Key Ctrl+Spacebar -Function MenuComplete
 
 # PowerShell parameter completion shim for the dotnet CLI
 Register-ArgumentCompleter -Native -CommandName dotnet -ScriptBlock {
