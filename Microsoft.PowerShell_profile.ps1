@@ -1,6 +1,7 @@
 Function Get-ChildItemForce { Get-ChildItem -Force }
 New-Alias -Force l Get-ChildItem
 New-Alias -Force ll Get-ChildItemForce
+New-Alias -Force quit exit
 
 Import-Module PSReadLine
 Import-Module PowerShellHumanizer
