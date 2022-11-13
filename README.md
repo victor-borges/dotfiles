@@ -4,14 +4,17 @@
 
 ## Prerequisites
 
-Have [Powershell Core](https://github.com/PowerShell/PowerShell) installed.
+Have [Powershell Core](https://github.com/PowerShell/PowerShell) and the [PragmataPro](https://fsd.it/shop/fonts/pragmatapro/) font installed.
 
 ## Installation
 
-The installation script will pull in the latest version and copy the files to your home folder, install the required packages and set Powershell as the login shell (if on Linux).
+The installation script will copy some files to your home folder and install the required packages.
 
 ```powershell
-git clone https://github.com/victor-borges/dotfiles.git; cd dotfiles; Set-ExecutionPolicy Bypass -Scope Process -Force; ./install.ps1
+git clone https://github.com/victor-borges/dotfiles --recurse-submodules
+cd dotfiles
+Set-ExecutionPolicy Bypass -Scope Process -Force
+./install.ps1
 ```
 
 If you only want to use the starship theme, copy `starship.toml` to `~/.config` and you should be good to go!
