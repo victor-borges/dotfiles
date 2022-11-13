@@ -38,4 +38,7 @@ elseif ($IsLinux) { & "$PSScriptRoot\scripts\linux.ps1" }
 Write-Output "Copying rest of Powershell profile contents..."
 Add-Content -Path $PROFILE -Value (Get-Content ./Microsoft.PowerShell_profile.ps1)
 
+Write-Output "Reloading profile..."
+& $PROFILE
+
 Write-Output "All done!"
