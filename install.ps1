@@ -24,7 +24,10 @@ $separator = if ($IsWindows) { ";" } else { ":" }
 Copy-Item -Recurse -Path ".\Terminal-Icons\Output\Terminal-Icons\" -Destination $env:PSModulePath.Split($separator)[0] -Force
 
 Write-Output "Copying starship.toml..."
-Copy-Item -Path starship.toml -Destination "$HOME/.config" -Force *> $null
+Copy-Item -Path "./.config/starship.toml" -Destination "$HOME/.config" -Force *> $null
+
+Write-Output "Copying kitty terminal config..."
+Copy-Item -Path "./.config/kitty/kitty.conf" -Destination "$HOME/.config/kitty/kitty.conf" -Force *> $null
 
 Remove-Item -Path $PROFILE -Force *> $null
 New-Item -Path $PROFILE -Force *> $null
