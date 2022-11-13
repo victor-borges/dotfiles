@@ -5,7 +5,7 @@ if ($env:SHELL -ne "/usr/bin/pwsh") {
 }
 
 Write-Output "Checking for AMD GPU..."
-if ((glxinfo | grep -iE 'vendor:').Contains('AMD') && !((sudo grubby --info=DEFAULT | grep -iE 'args=').Contains('amdgpu.ppfeaturemask=0xfffd3fff'))) {
+if ((glxinfo | grep -iE 'vendor:').Contains('AMD') -and !((sudo grubby --info=DEFAULT | grep -iE 'args=').Contains('amdgpu.ppfeaturemask=0xfffd3fff'))) {
     Write-Output "Applying fix for random crash from power management in Fedora (reboot necessary)..."
     sudo grubby --remove-args="amdgpu.ppfeaturemask" --args="amdgpu.ppfeaturemask=0xfffd3fff" --update-kernel=ALL
 }

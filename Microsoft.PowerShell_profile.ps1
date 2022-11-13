@@ -1,4 +1,6 @@
-Set-Alias l ls
+Function Get-ChildItemForce { Get-ChildItem -Force }
+New-Alias -Force l Get-ChildItem
+New-Alias -Force ll Get-ChildItemForce
 
 Import-Module PSReadLine
 Import-Module PowerShellHumanizer
