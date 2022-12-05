@@ -1,7 +1,15 @@
 Write-Output "Checking the default shell..."
-if ($env:SHELL -ne "/usr/bin/pwsh") {
+if (!$env:SHELL.StartsWith("/usr/bin/pwsh")) {
     Write-Output "Changing default shell to Powershell..."
-    chsh -s /usr/bin/pwsh
+
+    $testChsh = chsh;
+    $testLchsh = lchsh;
+
+    if ($testChsh) {
+        chsh -s /usr/bin/pwsh
+    } elseif ($testLchsh) {
+        Write-Output /usr/bin/pwsh | sudo lchsh $env:USER
+    }
 }
 
 Write-Output "Checking for AMD GPU..."

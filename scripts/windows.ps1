@@ -18,7 +18,7 @@ Write-Output "Checking for Starship prompt installation..."
 $testStarship = pwsh starship --version
 if (!($testStarship)) {
     Write-Output "Installing Starship..."
-    pwsh scoop install starship
+    sudo scoop install starship
 }
 
 Write-Output "Checking for Chocolatey installation..."

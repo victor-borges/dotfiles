@@ -71,9 +71,11 @@ format = "via [  vagrant $version]($style) "
 
 [docker_context]
 format = "via [  $context](bold blue) "
+disabled = true
 
 [helm]
 format = "via [  $version](bold purple) "
+disabled = true
 
 [python]
 symbol = "  "
@@ -87,8 +89,8 @@ disabled = true
 format = "via [  $version]($style) "
 
 [kubernetes]
-format = 'on [  $context\($namespace\)](bold purple) '
-disabled = false
+format = 'on [☸ $context\($namespace\)](bold purple) '
+disabled = true
 
 [kubernetes.context_aliases]
 "clcreative-k8s-staging" = "cl-k8s-staging"
