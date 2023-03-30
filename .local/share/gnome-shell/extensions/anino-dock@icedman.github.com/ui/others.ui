@@ -1,0 +1,240 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<interface>
+  <object class="AdwPreferencesPage" id="others">
+    <property name="name">others</property>
+    <property name="title" translatable="yes">Others</property>
+    <property name="icon-name">other-symbolic</property>
+    <child>
+      <object class="AdwPreferencesGroup">
+        <property name="title" translatable="yes">Special Icons</property>
+        <property name="description" translatable="yes">Add or remove icons.</property>
+        <child>
+          <object class="AdwActionRow">
+            <property name="title" translatable="yes">Favorite Apps Only</property>
+            <property name="subtitle" translatable="yes">Show only icons of favorite apps. Hide icons of other running apps.</property>
+            <property name="activatable-widget">favorites-only</property>
+            <child>
+              <object class="GtkSwitch" id="favorites-only">
+                <property name="valign">center</property>
+              </object>
+            </child>
+          </object>
+        </child>
+        <child>
+          <object class="AdwActionRow">
+            <property name="title" translatable="yes">Apps Icon</property>
+            <property name="subtitle" translatable="yes">Show the Overview Apps icon.</property>
+            <property name="activatable-widget">apps-icon</property>
+            <child>
+              <object class="GtkSwitch" id="apps-icon">
+                <property name="valign">center</property>
+              </object>
+            </child>
+          </object>
+        </child>
+        <child>
+          <object class="AdwActionRow">
+            <property name="title" translatable="yes">Move Apps Icon</property>
+            <property name="subtitle" translatable="yes">Show the Overview Apps icon as the first icon on the dock.</property>
+            <property name="activatable-widget">apps-icon-start</property>
+            <child>
+              <object class="GtkSwitch" id="apps-icon-start">
+                <property name="valign">center</property>
+              </object>
+            </child>
+          </object>
+        </child>
+        <child>
+          <object class="AdwActionRow">
+            <property name="title" translatable="yes">Trash</property>
+            <property name="subtitle" translatable="yes">Add a dynamic Trash icon which changes with its state and which has access to Empty Trash action.</property>
+            <property name="activatable-widget">trash-icon</property>
+            <child>
+              <object class="GtkSwitch" id="trash-icon">
+                <property name="valign">center</property>
+              </object>
+            </child>
+          </object>
+        </child>
+        <child>
+          <object class="AdwActionRow">
+            <property name="title" translatable="yes">Mounted Devices</property>
+            <property name="subtitle" translatable="yes">Show mounted device icons to quickly open or unmount volumes.</property>
+            <property name="activatable-widget">mounted-icon</property>
+            <child>
+              <object class="GtkSwitch" id="mounted-icon">
+                <property name="valign">center</property>
+              </object>
+            </child>
+          </object>
+        </child>
+      </object>
+    </child>
+    <child>
+      <object class="AdwPreferencesGroup">
+        <property name="title" translatable="yes">Icon Effects</property>
+        <property name="description" translatable="yes">Add dynamic effects or animations to the dash icons.</property>
+        <child>
+          <object class="AdwActionRow">
+            <property name="title" translatable="yes">Clock</property>
+            <property name="subtitle" translatable="yes">Show an analog clock widget. Requires Clocks app (gnome-clocks) pinned to the dash.</property>
+            <property name="activatable-widget">clock-icon</property>
+            <child>
+              <object class="GtkSwitch" id="clock-icon">
+                <property name="valign">center</property>
+              </object>
+            </child>
+          </object>
+        </child>
+        <child>
+          <object class="AdwActionRow" id="clock-style-row">
+            <property name="visible">true</property>
+            <property name="title" translatable="yes">Clock Style</property>
+            <property name="subtitle" translatable="yes">Set clock style.</property>
+            <property name="activatable-widget">clock-style</property>
+            <child>
+              <object class="GtkDropDown" id="clock-style">
+                <property name="valign">center</property>
+                <property name="model">clock-style-model</property>
+              </object>
+            </child>
+          </object>
+        </child>
+        <child>
+          <object class="AdwActionRow">
+            <property name="title" translatable="yes">Calendar</property>
+            <property name="subtitle" translatable="yes">Show an calendar widget. Requires Calendar app (gnome-calendar) pinned to the dash.</property>
+            <property name="activatable-widget">calendar-icon</property>
+            <child>
+              <object class="GtkSwitch" id="calendar-icon">
+                <property name="valign">center</property>
+              </object>
+            </child>
+          </object>
+        </child>
+      </object>
+    </child>
+    <child>
+      <object class="AdwPreferencesGroup">
+        <property name="title" translatable="yes">Widget Colors</property>
+        <property name="description" translatable="yes">Set colors used in custom drawn widgets.</property>
+        <child>
+          <object class="AdwActionRow">
+            <property name="title" translatable="yes">Primary Color</property>
+            <property name="subtitle" translatable="yes">Select primary color.</property>
+            <property name="activatable-widget">drawing-accent-color</property>
+            <child>
+              <object class="GtkColorButton" id="drawing-accent-color">
+                <property name="valign">center</property>
+                <property name="hexpand">false</property>
+                <property name="width-request">70px</property>
+                <property name="height-request">45px</property>
+                <property name="show-editor">true</property>
+                <property name="use-alpha">true</property>
+              </object>
+            </child>
+          </object>
+        </child>
+        <child>
+          <object class="AdwActionRow">
+            <property name="title" translatable="yes">Secondary Color</property>
+            <property name="subtitle" translatable="yes">Select secondary color.</property>
+            <property name="activatable-widget">drawing-secondary-color</property>
+            <child>
+              <object class="GtkColorButton" id="drawing-secondary-color">
+                <property name="valign">center</property>
+                <property name="hexpand">false</property>
+                <property name="width-request">70px</property>
+                <property name="height-request">45px</property>
+                <property name="show-editor">true</property>
+                <property name="use-alpha">true</property>
+              </object>
+            </child>
+          </object>
+        </child>
+        <child>
+          <object class="AdwActionRow">
+            <property name="title" translatable="yes">Light Color</property>
+            <property name="subtitle" translatable="yes">Select light color.</property>
+            <property name="activatable-widget">drawing-light-color</property>
+            <child>
+              <object class="GtkColorButton" id="drawing-light-color">
+                <property name="valign">center</property>
+                <property name="hexpand">false</property>
+                <property name="width-request">70px</property>
+                <property name="height-request">45px</property>
+                <property name="show-editor">true</property>
+                <property name="use-alpha">true</property>
+              </object>
+            </child>
+          </object>
+        </child>
+        <child>
+          <object class="AdwActionRow">
+            <property name="title" translatable="yes">Light Foreground</property>
+            <property name="subtitle" translatable="yes">Select light foreground color.</property>
+            <property name="activatable-widget">drawing-light-foreground</property>
+            <child>
+              <object class="GtkColorButton" id="drawing-light-foreground">
+                <property name="valign">center</property>
+                <property name="hexpand">false</property>
+                <property name="width-request">70px</property>
+                <property name="height-request">45px</property>
+                <property name="show-editor">true</property>
+                <property name="use-alpha">true</property>
+              </object>
+            </child>
+          </object>
+        </child>
+        <child>
+          <object class="AdwActionRow">
+            <property name="title" translatable="yes">Dark Color</property>
+            <property name="subtitle" translatable="yes">Select dark color.</property>
+            <property name="activatable-widget">drawing-dark-color</property>
+            <child>
+              <object class="GtkColorButton" id="drawing-dark-color">
+                <property name="valign">center</property>
+                <property name="hexpand">false</property>
+                <property name="width-request">70px</property>
+                <property name="height-request">45px</property>
+                <property name="show-editor">true</property>
+                <property name="use-alpha">true</property>
+              </object>
+            </child>
+          </object>
+        </child>
+        <child>
+          <object class="AdwActionRow">
+            <property name="title" translatable="yes">Dark Foreground</property>
+            <property name="subtitle" translatable="yes">Select dark foreground color.</property>
+            <property name="activatable-widget">drawing-dark-foreground</property>
+            <child>
+              <object class="GtkColorButton" id="drawing-dark-foreground">
+                <property name="valign">center</property>
+                <property name="hexpand">false</property>
+                <property name="width-request">70px</property>
+                <property name="height-request">45px</property>
+                <property name="show-editor">true</property>
+                <property name="use-alpha">true</property>
+              </object>
+            </child>
+          </object>
+        </child>
+      </object>
+    </child>
+  </object>
+  <object class="GtkStringList" id="clock-style-model">
+    <items>
+      <item translatable="yes">Overlay 1</item>
+      <item>Overlay 2</item>
+      <item>Round 1</item>
+      <item>Round 2</item>
+      <item>Round 3</item>
+      <item>Round 4</item>
+      <item>Framed 1</item>
+      <item>Framed 2</item>
+      <item>Framed 3</item>
+      <item>Framed 4</item>
+    </items>
+  </object>
+</interface>
