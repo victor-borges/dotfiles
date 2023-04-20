@@ -35,6 +35,8 @@ New-Item -Path $PROFILE -Force *> $null
 if ($IsWindows) { & "$PSScriptRoot\scripts\windows.ps1" }
 elseif ($IsLinux) { & "$PSScriptRoot\scripts\linux.ps1" }
 
+Set-Location $PSScriptRoot
+
 Write-Output "Copying rest of Powershell profile contents..."
 Add-Content -Path $PROFILE -Value (Get-Content ./Microsoft.PowerShell_profile.ps1)
 
