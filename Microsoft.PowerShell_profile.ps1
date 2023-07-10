@@ -13,12 +13,12 @@ Set-PSReadLineKeyHandler -Key Tab -Function MenuComplete
 Set-PSReadLineKeyHandler -Key Ctrl+Spacebar -Function MenuComplete
 
 # PowerShell parameter completion shim for the dotnet CLI
-Register-ArgumentCompleter -Native -CommandName dotnet -ScriptBlock {
-   param($commandName, $wordToComplete, $cursorPosition)
-      dotnet complete --position $cursorPosition "$wordToComplete" | ForEach-Object {
-         [System.Management.Automation.CompletionResult]::new($_, $_, 'ParameterValue', $_)
-      }
-}
+# Register-ArgumentCompleter -Native -CommandName dotnet -ScriptBlock {
+#    param($commandName, $wordToComplete, $cursorPosition)
+#       dotnet complete --position $cursorPosition "$wordToComplete" | ForEach-Object {
+#          [System.Management.Automation.CompletionResult]::new($_, $_, 'ParameterValue', $_)
+#       }
+# }
 
 # Invoke Starship.rs
 Invoke-Expression (&starship init powershell)
