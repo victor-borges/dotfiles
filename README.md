@@ -1,10 +1,10 @@
 # 🔧 dotfiles
 
-![Windows Terminal](docs/windows-terminal.png "Windows Terminal")
+![Terminal](docs/terminal.png "Terminal")
 
 ## Prerequisites
 
-Have [Powershell Core](https://github.com/PowerShell/PowerShell) and the [PragmataPro](https://fsd.it/shop/fonts/pragmatapro/) font installed.
+Have [Powershell Core](https://github.com/PowerShell/PowerShell) and [starship.rs](https://starship.rs) installed.
 
 ## Installation
 

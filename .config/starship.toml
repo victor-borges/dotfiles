@@ -6,19 +6,36 @@ right_format = "$battery$time"
 command_timeout = 1000
 
 format = """\
-[╭╴](238)$env_var$all
+[╭╴](238)$os  $all
 [╰─](238)$character"""
 
 palette = "catppuccin_mocha"
 
 [character]
-success_symbol = "[︀](238)"
-error_symbol = "[︀](238)"
+success_symbol = "[ ](238)"
+error_symbol = "[ ](238)"
 
-[env_var.STARSHIP_DISTRO]
-format = '[$env_value](bold white)'
-variable = "STARSHIP_DISTRO"
+[os]
 disabled = false
+
+[os.symbols]
+Windows = ''
+Linux = '︀'
+Macos = '󰀵'
+Arch = '󰣇'
+Debian = '︀'
+Raspbian = '︀'
+Ubuntu = '︀'
+Fedora = ''
+Gentoo = '︀'
+CentOS = '︀'
+openSUSE = '︀'
+Mint = '︀'
+Alpine = '︀'
+NixOS = '︀'
+Manjaro = '︀'
+Redhat = '︀'
+RedHatEnterprise = '︀'
 
 [username]
 style_user = "white bold"
@@ -30,7 +47,7 @@ show_always = false
 [directory]
 truncation_length = 3
 truncation_symbol = "…︀/"
-home_symbol = "  ~"
+home_symbol = "  ~"
 read_only_style = "197"
 read_only = "  "
 format = "at [$path]($style)[$read_only]($read_only_style) "
@@ -44,13 +61,13 @@ style = "bold green"
 [git_status]
 format = '[\($all_status$ahead_behind\)]($style) '
 style = "bold green"
-conflicted = " "
+conflicted = " "
 up_to_date = " "
 untracked = " ${count} "
 ahead = "⇡${count} "
-diverged = "⇕⇡${ahead_count} ⇣${behind_count} "
+diverged = "⇕⇡${ahead_count}⇣${behind_count} "
 behind = "⇣${count} "
-stashed = " ${count} "
+stashed = " ${count} "
 modified = " ${count} "
 staged = " ${count} "
 renamed = " ${count} "
@@ -65,33 +82,23 @@ tag_disabled = false
 tag_symbol = "  "
 disabled = false
 
-[terraform]
-format = "via [  terraform $version]($style) 壟 [$workspace]($style) "
-
-[vagrant]
-format = "via [  vagrant $version]($style) "
-
 [docker_context]
-format = "via [  $context](bold blue) "
-disabled = true
-
-[helm]
-format = "via [  $version](bold purple) "
+format = "via [󰡨  $context](bold blue) "
 disabled = true
 
 [python]
-symbol = "  "
+symbol = "󰌠 "
 python_binary = "python3"
 
 [nodejs]
-format = "via [  $version](bold green) "
+format = "via [󰎙 $version](bold green) "
 disabled = true
 
 [ruby]
-format = "via [  $version]($style) "
+format = "via [󰴭  $version]($style) "
 
 [kubernetes]
-format = 'on [☸ $context\($namespace\)](bold purple) '
+format = 'on [󱃾 $context\($namespace\)](bold purple) '
 disabled = true
 
 [kubernetes.context_aliases]
@@ -99,9 +106,9 @@ disabled = true
 "clcreative-k8s-production" = "cl-k8s-prod"
 
 [dotnet]
-symbol = '  '
+symbol = ' '
 detect_extensions = ["csproj", "fsproj", "xproj", "sln"]
-format = 'via [$symbol($version )( $tfm )]($style)'
+format = 'via [$symbol($version )(󰓾 $tfm )]($style)'
 
 [package]
 symbol = '  '
@@ -113,11 +120,11 @@ symbol = '  '
 symbol = 'CMake '
 
 [azure]
-symbol = '  '
+symbol = ' '
 disabled = true
 
 [gcloud]
-symbol = '  '
+symbol = '󱇶  '
 disabled = true
 
 [time]
@@ -128,61 +135,61 @@ disabled = true
 
 [battery]
 style = "white"
-full_symbol = " "
-charging_symbol = " "
-unknown_symbol = " "
-empty_symbol = " "
+full_symbol = "󰁹 "
+charging_symbol = "󰂆 "
+unknown_symbol = "󰂑 "
+empty_symbol = "󰂎 "
 format = "[$symbol]($style) "
 
 [[battery.display]]
 threshold = 10
-charging_symbol = " "
-discharging_symbol = " "
+charging_symbol = "󰢜 "
+discharging_symbol = "󰁺 "
 
 [[battery.display]]
 threshold = 20
-charging_symbol = " "
-discharging_symbol = " "
+charging_symbol = "󰂆 "
+discharging_symbol = "󰁻 "
 
 [[battery.display]]
 threshold = 30
-charging_symbol = " "
-discharging_symbol = " "
+charging_symbol = "󰂇 "
+discharging_symbol = "󰁼 "
 
 [[battery.display]]
 threshold = 40
-charging_symbol = " "
-discharging_symbol = " "
+charging_symbol = "󰂈 "
+discharging_symbol = "󰁽 "
 
 [[battery.display]]
 threshold = 50
-charging_symbol = " "
-discharging_symbol = " "
+charging_symbol = "󰢝 "
+discharging_symbol = "󰁾 "
 
 [[battery.display]]
 threshold = 60
-charging_symbol = " "
-discharging_symbol = " "
+charging_symbol = "󰂉 "
+discharging_symbol = "󰁿 "
 
 [[battery.display]]
 threshold = 70
-charging_symbol = " "
-discharging_symbol = " "
+charging_symbol = "󰢞 "
+discharging_symbol = "󰂀 "
 
 [[battery.display]]
 threshold = 80
-charging_symbol = " "
-discharging_symbol = " "
+charging_symbol = "󰂊 "
+discharging_symbol = "󰂁 "
 
 [[battery.display]]
 threshold = 90
-charging_symbol = " "
-discharging_symbol = " "
+charging_symbol = "󰂋 "
+discharging_symbol = "󰂂 "
 
 [[battery.display]]
 threshold = 100
-charging_symbol = " "
-discharging_symbol = " "
+charging_symbol = "󰂅 "
+discharging_symbol = "󰁹 "
 
 [palettes.catppuccin_mocha]
 rosewater = "#f5e0dc"

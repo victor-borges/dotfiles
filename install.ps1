@@ -30,7 +30,7 @@ Remove-Item -Path $PROFILE -Force *> $null
 New-Item -Path $PROFILE -Force *> $null
 
 if ($IsWindows) { & "$PSScriptRoot\scripts\windows.ps1" }
-elseif ($IsLinux) { & "$PSScriptRoot\scripts\linux.ps1" }
+elseif ($IsLinux -and ($(awk '/^ID=/' /etc/*-release | awk -F'=' '{ print tolower($2) }') -like "*fedora*")) { & "$PSScriptRoot\scripts\fedora.ps1" }
 
 Set-Location $PSScriptRoot
 

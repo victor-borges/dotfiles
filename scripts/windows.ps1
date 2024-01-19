@@ -27,6 +27,3 @@ if (!($testChoco)) {
     Write-Output "Installing Chocolatey..."
     Invoke-Expression ((New-Object System.Net.WebClient).DownloadString('https://community.chocolatey.org/install.ps1'))
 }
-
-$env:STARSHIP_DISTRO = '者 '
-[Environment]::SetEnvironmentVariable('STARSHIP_DISTRO', $env:STARSHIP_DISTRO, 'User')
