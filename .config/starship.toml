@@ -19,7 +19,7 @@ error_symbol = "[ ](238)"
 disabled = false
 
 [os.symbols]
-Windows = ''
+Windows = ''
 Linux = '︀'
 Macos = '󰀵'
 Arch = '󰣇'
@@ -106,7 +106,7 @@ disabled = true
 "clcreative-k8s-production" = "cl-k8s-prod"
 
 [dotnet]
-symbol = ' '
+symbol = '  '
 detect_extensions = ["csproj", "fsproj", "xproj", "sln"]
 format = 'via [$symbol($version )(󰓾 $tfm )]($style)'
 
